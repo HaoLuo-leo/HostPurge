@@ -1,44 +1,37 @@
+<p align="center"><img src="misc/logo.png" alt="HostPurge" width="600"></p>
+
+HostPurge is a tool for removing host contamination from sequencing reads. It supports four modes, each designed for different scenarios based on the level of host contamination and the need for precision.
+
 # Table of contents
 
-* [2022 update](#2022-update)
 * [Introduction](#introduction)
 * [Requirements](#requirements)
 * [Installation](#installation)
     * [Install from source](#install-from-source)
-    * [Build and run without installation](#build-and-run-without-installation)
-* [Quick usage](#quick-usage)
-* [Background](#background)
-    * [Assembly graphs](#assembly-graphs)
-    * [Limitations of short reads](#limitations-of-short-reads)
-    * [SPAdes graphs](#spades-graphs)
-* [Method: Illumina-only assembly](#method-illumina-only-assembly)
-    * [SPAdes assembly](#spades-assembly)
-    * [Multiplicity](#multiplicity)
-    * [Overlap removal](#overlap-removal)
-    * [Bridging](#bridging)
-* [Method: long-read-only assembly](#method-long-read-only-assembly)
-    * [miniasm assembly](#miniasm-assembly)
-    * [Racon polishing](#racon-polishing)
-* [Method: hybrid assembly](#method-hybrid-assembly)
-    * [Long-read plus contig assembly](#long-read-plus-contig-assembly)
-    * [Direct long-read bridging](#direct-long-read-bridging)
-    * [Bridge application](#bridge-application)
-    * [Finalisation](#finalisation)
-* [Conservative, normal and bold](#conservative-normal-and-bold)
-* [Options and usage](#options-and-usage)
-    * [Standard options](#standard-options)
-    * [Advanced options](#advanced-options)
+* [Usage](#usage)
+* [Modes](#modes)
 * [Output files](#output-files)
 * [Tips](#tips)
-    * [Running time](#running-time)
-    * [Necessary read length](#necessary-read-length)
-    * [Bad Illumina reads](#bad-illumina-reads)
-    * [Very short contigs](#very-short-contigs)
-    * [Chromosomes and plasmid depth](#chromosomes-and-plasmid-depth)
-    * [Known contamination](#known-contamination)
-    * [Manual multiplicity](#manual-multiplicity)
-    * [Manual completion](#manual-completion)
-    * [Using an external long-read assembly](#using-an-external-long-read-assembly)
-    * [Assemblies with contig overlaps](#assemblies-with-contig-overlaps)
+    * [Choosing the right mode](#choosing-the-right-mode)
 * [Acknowledgements](#acknowledgements)
 * [License](#license)
+
+# Introduction
+
+HostPurge is a versatile tool designed to remove host contamination from sequencing reads. It supports multiple modes of operation, allowing it to handle different levels of host contamination and precision requirements.
+
+# Requirements
+
+* Linux or macOS
+* Python 3.8 or later
+* KneadData 0.12.0 or later
+* Kraken2 2.1.2 or later
+
+# Installation
+
+### Install from source
+
+These instructions install the most up-to-date version of HostPurge:
+
+```bash
+conda install hostpurge
