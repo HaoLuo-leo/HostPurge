@@ -1,0 +1,38 @@
+package:
+  name: hostpurge
+  version: "1.0.0"
+
+source:
+  path: .
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -v"
+
+requirements:
+  host:
+    - python=3.8
+    - pip
+  run:
+    - python=3.8
+    - kneaddata=0.12.0
+    - kraken2=2.1.2
+    - biopython
+
+test:
+  imports:
+    - hostpurge
+  commands:
+    - python -m hostpurge.main --help
+
+about:
+  home: https://github.com/HaoLuo-leo/HostPurge
+  license: MIT
+  license_file: LICENSE.txt
+  summary: "HostPurge is a tool for removing host contamination."
+
+extra:
+  identifiers:
+    - biotools:hostpurge
+  recipe-maintainers:
+    - HaoLuo-leo
