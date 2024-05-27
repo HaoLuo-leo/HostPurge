@@ -20,7 +20,7 @@ HostPurge is a versatile tool designed to remove host contamination from sequenc
 
 # Requirements
 
-* Linux or macOS
+* Linux 
 * Python 3.8 or later
 * KneadData 0.12.0 or later
 * Kraken2 2.1.2 or later
@@ -72,7 +72,7 @@ log.txt: Log file with detailed process information
 
 # Acknowledgements
 
-HostPurge was developed with contributions from the bioinformatics community. Special thanks to the developers of KneadData and Kraken2, whose tools are integral to the functionality of HostPurge.
+
 
 # License
 
