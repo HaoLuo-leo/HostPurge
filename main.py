@@ -1,8 +1,8 @@
 import argparse
-from hostpurge.kneaddata_mode import run_kneaddata
-from hostpurge.kraken2_mode import run_kraken2
-from hostpurge.combined_mode import run_combined_kraken2_then_kneaddata, run_combined_kneaddata_then_kraken2
-from hostpurge.build_db import build_kraken2_db, build_kneaddata_db
+from kneaddata_mode import run_kneaddata
+from kraken2_mode import run_kraken2
+from combined_mode import run_combined_kraken2_then_kneaddata, run_combined_kneaddata_then_kraken2
+from build_db import build_kraken2_db, build_kneaddata_db
 
 def main():
     parser = argparse.ArgumentParser(

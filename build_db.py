@@ -21,11 +21,6 @@ def build_kraken2_db(db_dir, threads):
 def build_kneaddata_db(db_dir, input_fasta, threads):
     os.makedirs(db_dir, exist_ok=True)
     cmd = [
-        'kneaddata_database', '--download', 'human_genome', 'bowtie2', db_dir
-    ]
-    subprocess.run(cmd, check=True)
-
-    cmd = [
         'bowtie2-build', input_fasta, os.path.join(db_dir, 'kneaddata_db'), '--threads', str(threads)
     ]
     subprocess.run(cmd, check=True)
