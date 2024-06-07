@@ -1,4 +1,4 @@
-<p align="center"><img src="misc/logo.png" alt="HostPurge" width="600"></p>
+![image](https://github.com/HaoLuo-leo/HostPurge/assets/138950844/d30e36dc-0f2d-4c57-a7b3-d94502a3638a)
 
 HostPurge is a tool for removing host contamination from sequencing reads. It supports four modes, each designed for different scenarios based on the level of host contamination and the need for precision.
 
