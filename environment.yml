@@ -1,6 +1,5 @@
 name: hostpurge
 channels:
-  - luohao-leo
   - conda-forge
   - bioconda
   - defaults
