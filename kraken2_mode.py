@@ -1,29 +1,15 @@
 import subprocess
 
-def kraken2(kmer_db, input_1, input_2, threads):
-    kraken2_cmd = [
+def run_kraken2(input_1, input_2, output_dir, db_path, threads):
+    output_report = f"{output_dir}/kraken2.report"
+    output_result = f"{output_dir}/kraken2.output"
+    cmd = [
         "kraken2",
-        "--db", kmer_db,
-        "--paired", input_1, input_2,
-        "--threads", str(threads), "--use-names", "--report-zero-counts", 
-        "--report", "result.report",
-        "--output", "result.output"
-    ]
-    # Run kraken2
-    subprocess.run(kraken2_cmd, check=True)
-
-def extract(input_1, input_2,  filter_1, filter_2, taxid):
-    extract_cmd = [
-        "extract_kraken_reads.py",
-        "-k", "result.output",
-        "-r", "result.report",
+        "--db", db_path,
         "-1", input_1,
         "-2", input_2,
-        "-t", str(taxid), "--include-children",
-        "--exclude", "--fastq-output",
-        "-o", filter_1,
-        "-o2", filter_2
+        "--threads", str(threads),
+        "--report", output_report,
+        "--output", output_result
     ]
-
-    # Run extract_kraken_reads.py
-    subprocess.run(extract_cmd, check=True)
+    subprocess.run(cmd, check=True)
