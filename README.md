@@ -23,17 +23,23 @@ HostPurge is a versatile tool designed to remove host contamination from sequenc
 
 * Linux 
 * Python 3.8 or later
-* KneadData 0.12.0 or later
+* Bowtie2 2.2 or later
 * Kraken2 2.1.2 or later
+* krakentools
+* fastp 0.23.1 or later
 
 # Installation
 
-### Install from source
+### Install with pip
+```
+conda env create -f environment.yml
+pip install hostpurge
+```
 
 These instructions install the most up-to-date version of HostPurge:
 
 ```bash
-conda install hostpurge
+conda install luohao-leo::hostpurge
 ```
 # Usage
 
