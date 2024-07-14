@@ -1,7 +1,9 @@
-name:hostpurge
+name: hostpurge
 channels:
-  - bioconda
+  - luohao-leo
   - conda-forge
+  - bioconda
+  - defaults
 dependencies:
   - python=3.8
   - bowtie2=2.2
