@@ -1,0 +1,11 @@
+name: hostpurge
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.8
+  - bowtie2=2.2
+  - kraken2=2.1.2
+  - krakentools
+  - fastp=0.23.1
+  - biopython
