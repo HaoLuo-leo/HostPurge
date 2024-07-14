@@ -30,7 +30,7 @@ HostPurge is a versatile tool designed to remove host contamination from sequenc
 # Installation
 Download the environmental file : environment.yml
 ```
-wget https://github.com/HaoLuo-leo/HostPurge/blob/main/environment.yml
+wget https://raw.githubusercontent.com/HaoLuo-leo/HostPurge/main/environment.yml
 ```
 ### Install with pip
 ```
