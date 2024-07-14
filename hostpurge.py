@@ -1,9 +1,9 @@
 import argparse
 import os
-from bowtie2_mode import bowtie2, parse_sam
-from kraken2_mode import kraken2, extract
-from fastp import qc
-from build_db import download_taxonomy, add_to_library, build_kraken2_db, build_bowtie2_db
+from .bowtie2_mode import bowtie2, parse_sam
+from .kraken2_mode import kraken2, extract
+from .fastp import qc
+from .build_db import download_taxonomy, add_to_library, build_kraken2_db, build_bowtie2_db
 
 def main():
     parser = argparse.ArgumentParser(
@@ -15,7 +15,7 @@ def main():
 
     # Subparser for the "run" command
     run_parser = subparsers.add_parser('run', help='Run HostPurge with specified mode')
-    run_parser.add_argument("--mode", choices=['a', 'b', 'c', 'd'], required=True, help="Mode of operation: a, b, c, or d")
+    run_parser.add_argument("--mode", choices=['a', 'b', 'c', 'd'], default='c', help="Mode of operation: a, b, c, or d")
     run_parser.add_argument("--bowtie2_db", dest="bowtie2_db", help="Path to the bowtie2 database")
     run_parser.add_argument("--kmer_db", dest="kmer_db", help="Path to the kmer database")
     run_parser.add_argument("-i1", dest="input_1", help="Input read file 1 (FASTQ format)")
