@@ -29,7 +29,7 @@ HostPurge is a versatile tool designed to remove host contamination from sequenc
 * fastp 0.23.1 or later
 
 # Installation
-Download the environmental file : [environment.yml](blob:https://github.com/ad7caca9-2056-4fc1-beb3-8b99973b83c7)
+Download the environmental file : [environment.yml](https://github.com/ad7caca9-2056-4fc1-beb3-8b99973b83c7)
 ### Install with pip
 ```
 conda env create -f environment.yml
