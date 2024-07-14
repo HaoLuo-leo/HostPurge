@@ -1,4 +1,4 @@
-name: hostpurge
+name:hostpurge
 channels:
   - bioconda
   - conda-forge
