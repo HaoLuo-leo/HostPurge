@@ -58,20 +58,11 @@ hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fast
 ```
 ### Build database
 #### kmer_db
-Download NCBI taxonomy id as a part of database
-```
-mkdir luohao/taxonomy
-cd luohao/taxonomy
-wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
-wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/nucl_wgs.accession2taxid.gz
-wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz
-gunzip nucl_gb.accession2taxid.gz nucl_wgs.accession2taxid.gz
-tar -xzf taxdump.tar.gz
-```
-Build the kmer_db(note:'--db-name luohao' is the directory name of NCBI taxonomy id)
+
 ```
 hostpurge build-db --db-type kmer  --db-name luohao --add-to-library name.fasta -t 8
 ```
+
 ## alignment_db
 ```
 hostpurge build-db --db-type bowtie2 --input-fasta referencegenome.fasta -o db_name -s 1
