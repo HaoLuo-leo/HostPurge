@@ -57,8 +57,13 @@ hostpurge run --help
 hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fastq -t 8
 ```
 ### Build database
+## kmer_db
 ```
-hostpurge build-db --db-type kraken2  --db-name luohao --add-to-library name.fasta -t 8
+hostpurge build-db --db-type kmer  --db-name luohao --add-to-library name.fasta -t 8
+```
+## alignment_db
+```
+hostpurge build-db --db-type bowtie2 --input-fasta referencegenome.fasta -o db_name -s 1
 ```
 ### Run HostPurge with default mode which is same with mode c:
 ```
@@ -100,7 +105,7 @@ hostpurge run --mode b \
 --taxid 9606 -t 12
 ```
 
-### Run HostPurge with ddefault mode:
+### Run HostPurge with d mode:
 ```
 hostpurge run --mode d \
 --kmer_db database/kraken2/human \
