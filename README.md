@@ -60,7 +60,7 @@ hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fast
 #### kmer_db
 
 ```
-hostpurge build-db --db-type kmer  --db-name luohao --add-to-library name.fasta -t 8
+hostpurge build-db --db-type kraken2  --db-name luohao --add-to-library name.fasta -t 8
 ```
 
 ## alignment_db
