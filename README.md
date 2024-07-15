@@ -34,6 +34,7 @@ wget https://raw.githubusercontent.com/HaoLuo-leo/HostPurge/main/environment.yml
 ### Install with pip
 ```
 conda env create -f environment.yml
+conda activate hostpurge
 pip install hostpurge
 ```
 
