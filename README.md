@@ -45,13 +45,28 @@ conda install luohao-leo::hostpurge
 ```
 # Usage
 
-### Run HostPurge with the desired mode:
-```
-hostpurge input_1.fastq input_2.fastq output_dir --mode [a|b|c|d] [additional options]
-```
 ### For detailed help information:
 ```
 hostpurge --help
+hostpurge qc --help
+hostpurge build-db --help
+hostpurge run --help 
+```
+### Quality control
+```
+hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fastq -t 8
+```
+### Build database
+```
+hostpurge build-db --db-type kraken2  --db-name luohao --add-to-library name.fasta -t 8
+```
+### Run HostPurge with default mode which is same with mode c:
+```
+hostpurge run --kmer_db database/kraken2/human \
+--bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+-i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
+-o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--taxid 9606 -t 12
 ```
 # Modes
 
@@ -67,17 +82,33 @@ Mode c: Recommended for samples with high host contamination. This mode balances
 
 Mode d: Best for samples with low host contamination but requiring high precision. This mode ensures the highest accuracy by using both KneadData and Kraken2 in sequence.
 
-# Output files
+### Run HostPurge with a mode:
+```
+hostpurge run --mode a \
+--bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+-i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
+-o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+-t 12
+```
 
-HostPurge generates the following output files in the specified output directory:
+### Run HostPurge with b mode:
+```
+hostpurge run --mode b \
+--kmer_db database/kraken2/human \
+-i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
+-o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--taxid 9606 -t 12
+```
 
-cleaned_reads_1.fastq: Cleaned reads from input_1
-
-cleaned_reads_2.fastq: Cleaned reads from input_2
-
-host_contamination_report.txt: Report detailing the host contamination removal process
-
-log.txt: Log file with detailed process information
+### Run HostPurge with ddefault mode:
+```
+hostpurge run --mode d \
+--kmer_db database/kraken2/human \
+--bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+-i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
+-o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--taxid 9606 -t 12
+```
 
 # Acknowledgements
 
