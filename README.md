@@ -66,7 +66,7 @@ hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library h
 
 ## alignment_db
 ```
-hostpurge build-db --db-type bowtie2 --input-fasta referencegenome.fasta -o db_name -s 1
+hostpurge build-db --db-type bowtie2 --input-fasta human.fasta -o human_alignment_db -s 1
 ```
 ### Run HostPurge with default mode which is same with mode c:
 ```
