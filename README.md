@@ -58,10 +58,10 @@ hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fast
 ```
 ### Build database
 #### kmer_db
-Such as >GWHBFPX00000001|kraken:taxid|39947  Adapter sequence
+Such as >GWHBFPX00000001|kraken:taxid|9606  Adapter sequence
 The taxnonomy id could be found in https://www.ncbi.nlm.nih.gov/datasets/taxonomy/.
 ```
-hostpurge build-db --db-type kraken2  --db-name luohao --add-to-library GWHBFPX0000000.fasta -t 8
+hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24
 ```
 
 ## alignment_db
