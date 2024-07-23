@@ -58,36 +58,48 @@ hostpurge qc -i1 raw_1.fastq  -i2 raw_2.fastq -o1 clean_1.fastq -o2 clean_2.fast
 ```
 ### Build database
 #### kmer_db
-it might be cost me several times based on the internet of linux, so we could download them from website and upload them to linux
-download taxonomy by yourself, website: https://ftp.ncbi.nih.gov/pub/taxonomy/
-accession2taxid/nucl_gb.accession2taxid.gz
-accession2taxid/nucl_wgs.accession2taxid.gz
-taxdump.tar.gz
+
+Reference genome fasta file not downloaded from NCBI may need their taxonomy information assigned explicitly.
+Such as >GWHBFPX00000001|kraken:taxid|9606  Adapter sequence
+
+The taxnonomy id could be found in https://www.ncbi.nlm.nih.gov/datasets/taxonomy/.
+
+Note: Sometimes, there are plenty of fasta files need modify their  taxonomy information, so we could use the following code to deal with them.
+
+#awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|39947  Adapter sequence" } 1' rice.genome.fasta>rice.genome_1.fasta
+
+#awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|9606  Adapter sequence" } 1' human_genome.fasta>human_genome_1.fasta
+
+```
+hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24
+```
+Download taxonomy might be cost we several times based on the internet of linux, so we could download it from website and upload them to linux.
+
+website of three files needed: 
+
+https://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz;
+
+https://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_wgs.accession2taxid.gz;
+
+https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
+```
 mkdir db_name/taxonomy
 gunzip nucl_gb.accession2taxid.gz db_name/taxonomy
 gunzip nucl_wgs.accession2taxid.gz db_name/taxonomy
 tar zxf taxdump.tar.gz  db_name/taxonomy
-Fasta file not downloaded from NCBI may need their taxonomy information assigned explicitly.
-Such as >GWHBFPX00000001|kraken:taxid|9606  Adapter sequence
-The taxnonomy id could be found in https://www.ncbi.nlm.nih.gov/datasets/taxonomy/.
-Note: Sometimes, there are plenty of fasta files need modify their  taxonomy information, so we could use the following code to deal with them.
-#awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|39947  Adapter sequence" } 1' GWHBFPX00000000.genome.fasta>GWHBFPX00000000.genome_1.fasta
-#awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|9606  Adapter sequence" } 1' human_genome.fasta>human_genome_1.fasta
-```
-hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24
 ```
 If you download taxonomy by yourself, please use
 ```
 hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24 --bypass-tax
 ```
-## alignment_db
+#### alignment_db
 ```
-hostpurge build-db --db-type bowtie2 --input-fasta human.fasta -o human_alignment_db -s 1
+hostpurge build-db --db-type bowtie2 --input-fasta human.fasta -o human_alignment_db 
 ```
 ### Run HostPurge with default mode which is same with mode c:
 ```
 hostpurge run --kmer_db database/kraken2/human \
---bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+--alignment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
 -i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
 -o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
 --taxid 9606 -t 12
@@ -109,7 +121,7 @@ Mode d: Best for samples with low host contamination but requiring high precisio
 ### Run HostPurge with a mode:
 ```
 hostpurge run --mode a \
---bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+--alignment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
 -i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
 -o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
 -t 12
@@ -128,7 +140,7 @@ hostpurge run --mode b \
 ```
 hostpurge run --mode d \
 --kmer_db database/kraken2/human \
---bowtie2_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
+--alianment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
 -i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
 -o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
 --taxid 9606 -t 12
