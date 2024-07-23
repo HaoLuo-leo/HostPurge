@@ -44,6 +44,8 @@ These instructions install the most up-to-date version of HostPurge:
 conda install luohao-leo::hostpurge
 ```
 # Usage
+![image](https://github.com/user-attachments/assets/ea70d579-95d4-45fb-9852-fbce7afacbe2)
+
 HostPurge have four models for your choose, and you can choose each of them as our suggested in github.
 ### For detailed help information:
 ```
