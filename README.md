@@ -74,7 +74,7 @@ Note: Sometimes, there are plenty of fasta files need modify their  taxonomy inf
 #awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|9606  Adapter sequence" } 1' human_genome.fasta>human_genome_1.fasta
 
 ```
-hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24
+hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library human.fasta -t 24
 ```
 Download taxonomy might be cost we several times based on the internet of linux, so we could download it from website and upload them to linux.
 
@@ -93,18 +93,18 @@ tar zxf taxdump.tar.gz  db_name/taxonomy
 ```
 If you download taxonomy by yourself, please use
 ```
-hostpurge build-db --db-type kraken2  --db-name human_kmer_db --add-to-library human.fasta -t 24 --bypass-tax
+hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library human.fasta -t 24 --bypass-tax
 ```
 #### alignment_db
 ```
-hostpurge build-db --db-type bowtie2 --input-fasta human.fasta -o human_alignment_db 
+hostpurge build-db --db-type alignment --input-fasta human.fasta -o human_alignment_db 
 ```
 ### Run HostPurge with default mode which is same with mode c:
 ```
-hostpurge run --kmer_db database/kraken2/human \
---alignment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
--i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
--o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+hostpurge run --kmer_db human_kmer_db \
+--alignment_db human_alignment_db \
+-i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
 # Modes
@@ -124,28 +124,28 @@ Mode d: Best for samples with low host contamination but requiring high precisio
 ### Run HostPurge with a mode:
 ```
 hostpurge run --mode a \
---alignment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
--i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
--o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--alignment_db human_alignment_db \
+-i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-o1 filter_1.fq -o2 filter_2.fq \
 -t 12
 ```
 
 ### Run HostPurge with b mode:
 ```
 hostpurge run --mode b \
---kmer_db database/kraken2/human \
--i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
--o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--kmer_db human_kmer_db \
+-i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
 
 ### Run HostPurge with d mode:
 ```
 hostpurge run --mode d \
---kmer_db database/kraken2/human \
---alianment_db /data/meta/db/kneaddata/human/hg37dec_v0.1 \
--i1 anonymous_read0_1.fastq -i2 anonymous_read0_2.fastq \
--o1 aabbbbnony_1.fq -o2 aabbbbnony_2.fq \
+--kmer_db human_kmer_db \
+--alianment_db human_alignment_db \
+-i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
 
