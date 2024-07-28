@@ -47,20 +47,21 @@ conda env create -f environment.yml
 conda activate hostpurge
 conda install hostpurge
 ```
-### Install with download unzip:
+### Install with download and unzip:
 ```
 #Specify the conda file name
-
 s=hostpurge
 
 #Download the package
+wget https://github.com/HaoLuo-leo/HostPurge/releases/download/v1.2.1/hostpurge-1.2.1-linux.tar.gz
 
 #Specify the installation directory
-
 mkdir -p ${soft}/envs/${s}
 tar -xvzf ${s}.tar.gz -C ${soft}/envs/${s}
+
 #Boot environment
 conda activate ${s}
+
 #Initialize the environment
 conda unpack
 ```
