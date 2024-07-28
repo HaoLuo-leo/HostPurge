@@ -31,17 +31,38 @@ Download the environmental file : environment.yml
 ```
 wget https://raw.githubusercontent.com/HaoLuo-leo/HostPurge/main/environment.yml
 ```
+
 ### Install with pip
+
 ```
 conda env create -f environment.yml
 conda activate hostpurge
 pip install hostpurge
 ```
 
-These instructions install the most up-to-date version of HostPurge:
+### Install with conda:
 
 ```bash
-conda install luohao-leo::hostpurge
+conda env create -f environment.yml
+conda activate hostpurge
+conda install hostpurge
+```
+### Install with download unzip:
+```
+#Specify the conda file name
+
+s=hostpurge
+
+#Download the package
+
+#Specify the installation directory
+
+mkdir -p ${soft}/envs/${s}
+tar -xvzf ${s}.tar.gz -C ${soft}/envs/${s}
+#Boot environment
+conda activate ${s}
+#Initialize the environment
+conda unpack
 ```
 # Usage
 ![image](https://github.com/user-attachments/assets/2d319c88-c4a3-450f-b8c4-f2acadb334c4)
