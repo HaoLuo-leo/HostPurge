@@ -10,7 +10,7 @@ HostPurge is a tool for removing host contamination from sequencing reads. It su
 * [Installation](#installation)
 * [Usage](#usage)
 * [Modes](#modes)
-* [Acknowledgements](#acknowledgements)
+* [Result](#result)
 * [License](#license)
 
 # Introduction
@@ -171,8 +171,14 @@ hostpurge run --mode d \
 -o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
+# Result
+```
+pip install matplotlib
+python depletion_rate_with_plot.py -i1 demo_1.fq  -i2 demo_2.fq -f1 filter_1.fq -f2 filter_2.fq -t o.tsv -p o.png
+```
+![image](https://github.com/user-attachments/assets/a85fe2ea-d8a0-4a69-8ccd-1fa966859cd6)
 
-# Acknowledgements
+![image](https://github.com/user-attachments/assets/08fced13-30cc-4a0b-ae86-68555c0dc3c6)
 
 
 
