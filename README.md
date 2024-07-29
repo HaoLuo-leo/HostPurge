@@ -173,9 +173,21 @@ hostpurge run --mode d \
 ```
 # Result
 ```
+# Download the depletion_rate_with_plot.py script file
+wget https://github.com/HaoLuo-leo/HostPurge/blob/main/depletion_rate_with_plot.py
+
+# Install the matplotlib library for plotting
 pip install matplotlib
-python depletion_rate_with_plot.py -i1 demo_1.fq  -i2 demo_2.fq -f1 filter_1.fq -f2 filter_2.fq -t o.tsv -p o.png
+
+# Run the depletion_rate_with_plot.py script
+# -i1 and -i2 specify the input fastq files
+# -f1 and -f2 specify the filtered fastq files
+# -t specifies the output TSV file
+# -p specifies the output PNG file
+python depletion_rate_with_plot.py -i1 demo_1.fq -i2 demo_2.fq -f1 filter_1.fq -f2 filter_2.fq -t o.tsv -p o.png
+
 ```
+The result of demo data is as follow:
 ![image](https://github.com/user-attachments/assets/a85fe2ea-d8a0-4a69-8ccd-1fa966859cd6)
 
 ![image](https://github.com/user-attachments/assets/08fced13-30cc-4a0b-ae86-68555c0dc3c6)
