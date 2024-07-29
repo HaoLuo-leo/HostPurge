@@ -66,7 +66,8 @@ conda activate ${s}
 conda unpack
 ```
 # Usage
-![image](https://github.com/user-attachments/assets/2d319c88-c4a3-450f-b8c4-f2acadb334c4)
+![image](https://github.com/user-attachments/assets/4b2c9e35-562b-4e17-989f-619adf70b897)
+
 
 
 HostPurge have four models for your choose, and you can choose each of them as our suggested in github.
