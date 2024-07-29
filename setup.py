@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='hostpurge',
-    version='1.0.1',
+    version='1.2.1',
     packages=find_packages(),
     python_requires='>=3.8',
     entry_points={
