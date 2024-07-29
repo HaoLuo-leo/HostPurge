@@ -40,13 +40,6 @@ conda activate hostpurge
 pip install hostpurge
 ```
 
-### Install with conda:
-
-```bash
-conda env create -f environment.yml
-conda activate hostpurge
-conda install hostpurge
-```
 ### Install with download and unzip:
 ```
 #Specify the conda file name
@@ -64,6 +57,13 @@ conda activate ${s}
 
 #Initialize the environment
 conda unpack
+```
+### Install with conda:
+
+```
+conda env create -f environment.yml
+conda activate hostpurge
+conda install luohao-leo::hostpurge
 ```
 # Usage
 ![image](https://github.com/user-attachments/assets/4b2c9e35-562b-4e17-989f-619adf70b897)
