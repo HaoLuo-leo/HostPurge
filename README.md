@@ -172,6 +172,7 @@ hostpurge run --mode d \
 --taxid 9606 -t 12
 ```
 # Result
+The following Python script will generate a table and a visual result.
 ```
 # Download the depletion_rate_with_plot.py script file
 wget https://github.com/HaoLuo-leo/HostPurge/blob/main/depletion_rate_with_plot.py
