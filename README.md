@@ -97,7 +97,7 @@ Note: Sometimes, there are plenty of fasta files need modify their  taxonomy inf
 #awk '/^>/ { sub(">", "", $1); $0 = ">" $1 "|kraken:taxid|9606  Adapter sequence" } 1' human_genome.fasta>human_genome_1.fasta
 
 ```
-hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library human.fasta -t 24
+hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library demo.fasta -t 24
 ```
 Download taxonomy might be cost we several times based on the internet of linux, so we could download it from website and upload them to linux.
 
@@ -116,17 +116,17 @@ tar zxf taxdump.tar.gz  db_name/taxonomy
 ```
 If you download taxonomy by yourself, please use
 ```
-hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library human.fasta -t 24 --bypass-tax
+hostpurge build-db --db-type kmer  --db-name human_kmer_db --add-to-library demo.fasta -t 24 --bypass-tax
 ```
 #### alignment_db
 ```
-hostpurge build-db --db-type alignment --input-fasta human.fasta -o human_alignment_db 
+hostpurge build-db --db-type alignment --input-fasta demo.fasta -o human_alignment_db 
 ```
 ### Run HostPurge with default mode which is same with mode c:
 ```
 hostpurge run --kmer_db human_kmer_db \
 --alignment_db human_alignment_db \
--i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-i1 demo_1.fastq -i2 demo_2.fastq \
 -o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
@@ -148,7 +148,7 @@ Mode d: Best for samples with low host contamination but requiring high precisio
 ```
 hostpurge run --mode a \
 --alignment_db human_alignment_db \
--i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-i1 demo_1.fastq -i2 demo_2.fastq \
 -o1 filter_1.fq -o2 filter_2.fq \
 -t 12
 ```
@@ -157,7 +157,7 @@ hostpurge run --mode a \
 ```
 hostpurge run --mode b \
 --kmer_db human_kmer_db \
--i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-i1 demo_1.fastq -i2 demo_2.fastq \
 -o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
@@ -167,7 +167,7 @@ hostpurge run --mode b \
 hostpurge run --mode d \
 --kmer_db human_kmer_db \
 --alianment_db human_alignment_db \
--i1 demohuman0_1.fastq -i2 demohuman0_2.fastq \
+-i1 demo_1.fastq -i2 demo_2.fastq \
 -o1 filter_1.fq -o2 filter_2.fq \
 --taxid 9606 -t 12
 ```
