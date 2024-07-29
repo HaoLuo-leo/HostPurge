@@ -70,7 +70,7 @@ conda install luohao-leo::hostpurge
 
 
 
-HostPurge have four models for your choose, and you can choose each of them as our suggested in github.
+Typically, the host decontamination process involves three steps: qc, build-db, and run. If you have already built your database or do not require quality control for your data, you can directly proceed with the run step.
 ### For detailed help information:
 ```
 hostpurge --help
