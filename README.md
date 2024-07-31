@@ -112,7 +112,8 @@ https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 mkdir db_name/taxonomy
 gunzip nucl_gb.accession2taxid.gz db_name/taxonomy
 gunzip nucl_wgs.accession2taxid.gz db_name/taxonomy
-tar zxf taxdump.tar.gz  db_name/taxonomy
+tar zxf taxdump.tar.gz  human_kmer_db/taxonomy
+#human_kmer_db is a directory name of '--db-name'
 ```
 If you download taxonomy by yourself, please use
 ```
